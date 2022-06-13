@@ -4,6 +4,8 @@ import validate from 'express-validation';
 import * as userController from '../controllers/user/user.controller';
 import * as userValidator from '../controllers/user/user.validator';
 
+import * as blogValidator from '../controllers/blog/blog.validator'
+
 const router = express.Router();
 
 //= ===============================
@@ -18,6 +20,11 @@ router.post(
 router.post(
   '/register',
   validate(userValidator.register),
+  userController.register,
+);
+router.post(
+  '/createblog',
+  validate(blogValidator.blog),
   userController.register,
 );
 
